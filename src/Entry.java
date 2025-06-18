@@ -2,10 +2,10 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Entry {
-    public int id;
-    public String title;
-    public String body;
-    public LocalDateTime dateCreated;
+    private final int id;
+    private String title;
+    private String body;
+    private final LocalDateTime dateCreated;
 
     public int getId() {
         return this.id;
@@ -19,6 +19,12 @@ public class Entry {
     public String getDateCreated() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         return dateCreated.format(formatter);
+    }
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    public void setBody(String body) {
+        this.body = body;
     }
 
     public Entry(int id, String title, String body){

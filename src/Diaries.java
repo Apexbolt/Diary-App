@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Diaries {
-    List<Diary> diaries = new ArrayList<>();
+    private List<Diary> diaries = new ArrayList<>();
 
     public void add(String username, String password){
            diaries.add(new Diary(username,password));
@@ -11,7 +11,7 @@ public class Diaries {
    public Diary findByUsername(String username){
 
         for(Diary diary: diaries){
-                if(diary.username.equals(username)){
+                if(diary.getUsername().equals(username)){
                     return diary;
               }
         }
@@ -27,7 +27,7 @@ public class Diaries {
 
     public void DisplayDiaries(){
         for(Diary diary: diaries){
-            System.out.println(diary.username +"'s diary");
+            System.out.println(diary.getUsername() +"'s diary");
             if(diaries.isEmpty()){
                 throw new IllegalStateException("No entries to display");
             }

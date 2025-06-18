@@ -2,9 +2,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Diary {
-   public String username;
+   private String username;
    private final String password;
-   public boolean isLocked;
+   private boolean isLocked;
    private List<Entry> entries;
 
     public String getPassword() {
@@ -77,7 +77,7 @@ public class Diary {
 
     public Entry findEntryById(int id){
         for (Entry entry : entries){
-            if (entry.id == id){
+            if (entry.getId() == id){
                 return entry;
             }
         }
@@ -87,8 +87,9 @@ public class Diary {
     public void updateEntry(int id ,String title, String body){
         Entry entry = findEntryById(id);  //passing assigning an object of the same class type (seems like cloning an object)
        if (entry != null){
-           entry.title = title;
-           entry.body += "\n "+ body;
+           entry.setTitle(title);
+           String newBody = entry.getBody() +"\n"+body;
+           entry.setBody(newBody);
            System.out.println("Entry has been updated");
        } else {
            System.out.println("Entry not found");
@@ -100,8 +101,8 @@ public class Diary {
             throw new IllegalStateException("No entries to display");
         }
         for (Entry entry : entries){
-            System.out.println("\n"+entry.id +"-> "+entry.title);
-            System.out.println(entry.body);
+            System.out.println("\n"+entry.getId() +"-> "+entry.getTitle());
+            System.out.println(entry.getBody());
         }
     }
 
